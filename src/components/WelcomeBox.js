@@ -1,7 +1,23 @@
 import React from "react";
+import { connect } from "react-redux";
 
-const WelcomeBox = (props) => {
-  return <div>WelcomeBox</div>;
+const renderWelcomeText = (name) => {
+  return (
+    <div>
+      <h1>Hello {name} Welcome!!!</h1>
+    </div>
+  );
 };
 
-export default WelcomeBox;
+const WelcomeBox = (props) => {
+  return props.login ? renderWelcomeText(props.name) : null;
+};
+
+const mapStateToProps = (state) => {
+  return {
+    name: state.authReducer.name,
+    login: state.authReducer.login,
+  };
+};
+
+export default connect(mapStateToProps)(WelcomeBox);

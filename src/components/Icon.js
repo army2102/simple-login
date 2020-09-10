@@ -1,7 +1,15 @@
 import React from "react";
+import { connect } from "react-redux";
+import "./App.css";
 
 const Icon = (props) => {
-  return <div>Icon</div>;
+  return <i className={`massive ${props.iconName} icon`}></i>;
 };
 
-export default Icon;
+const mapStateToProps = (state) => {
+  return {
+    iconName: state.themeReducer.iconName,
+  };
+};
+
+export default connect(mapStateToProps)(Icon);

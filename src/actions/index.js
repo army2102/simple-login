@@ -12,6 +12,7 @@ export const logoutAction = () => {
     type: "LOGOUT",
     payload: {
       login: false,
+      name: "",
     },
   };
 };

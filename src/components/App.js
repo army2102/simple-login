@@ -1,15 +1,27 @@
 import React from "react";
+import { connect } from "react-redux";
+import "./App.css";
 
 import Icon from "./Icon";
-import 
+import WelcomeBox from "./WelcomeBox";
+import LoginBox from "./LoginBox";
 
 const App = (props) => {
   return (
-    <div>
+    <div className="app" style={{ backgroundColor: props.backgroundColor }}>
       <Icon />
+      <WelcomeBox />
+      <LoginBox />
       <Icon />
     </div>
   );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    backgroundColor: state.themeReducer.backgroundColor,
+  };
+};
+
+export default connect(mapStateToProps)(App);
